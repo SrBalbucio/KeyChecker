@@ -21,8 +21,8 @@ public class KeyChecker {
 
     public boolean validate(String email, String key){
         if(!email.contains("@")){ return false; }
-        datacrack = new Datacrack(new User(email, key));
-        manager = datacrack.getManager();
+        this.datacrack = new Datacrack(new User(email, key));
+        this.manager = datacrack.getManager();
         manager.addSocket(socket);
         boolean v = false;
         try{
