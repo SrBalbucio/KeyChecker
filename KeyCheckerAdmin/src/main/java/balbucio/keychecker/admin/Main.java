@@ -30,6 +30,9 @@ public class Main {
         } catch (UserInsufficientPermissionException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Esse usuário não tem permissão suficiente\nLembre-se o usuário deve ter permissão ADMIN!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Não foi possível concluir a criação da Key!");
         }
     }
 }

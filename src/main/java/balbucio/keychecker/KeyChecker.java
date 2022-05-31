@@ -16,17 +16,16 @@ public class KeyChecker {
 
     public KeyChecker(Application app, String ip, int port){
         this.app = app;
-        this.socket = new SocketInstance(ip, port);
+        this.socket = new SocketInstance(ip, port, true);
     }
 
     public boolean validate(String email, String key){
         if(!email.contains("@")){ return false; }
-        this.datacrack = new Datacrack(new User(email, key));
+        this.datacrack = new Datacrack(new User(email, key), true);
         this.manager = datacrack.getManager();
-        manager.addSocket(socket);
         boolean v = false;
         try{
-            RootDataPack keys = manager.getRootPack(email);
+            RootDataPack keys = manager.getRootPack(email, socket);
             if(keys.contains(key) && keys.getString(key).equals(app.getApplicationName())){
                 v = true;
             }
